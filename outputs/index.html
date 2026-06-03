@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>意大利旅行地图</title>
+    <link rel="stylesheet" href="./assets/leaflet.css" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Italy Planner</p>
+          <h1>意大利旅行地图</h1>
+        </div>
+        <button class="icon-button" id="resetView" type="button" aria-label="回到意大利地图">⌂</button>
+      </header>
+
+      <section class="status-strip" aria-live="polite">
+        <span id="currentScope">意大利总览</span>
+        <span id="planCount">0 个景点已加入行程</span>
+      </section>
+
+      <section class="map-stage" id="mapStage">
+        <div class="italy-map" id="italyMap" aria-label="意大利旅行地图"></div>
+      </section>
+
+      <nav class="segmented" aria-label="视图切换">
+        <button class="segment active" type="button" data-panel="explore">探索</button>
+        <button class="segment" type="button" data-panel="itinerary">行程</button>
+        <button class="segment" type="button" data-panel="saved">收藏</button>
+      </nav>
+
+      <section class="panel active" id="explorePanel">
+        <div class="section-heading">
+          <h2 id="panelTitle">选择城市</h2>
+          <button class="text-button" id="backToCities" type="button" hidden>城市列表</button>
+        </div>
+        <div class="city-grid" id="cityGrid"></div>
+        <div class="spot-list" id="spotList" hidden></div>
+      </section>
+
+      <section class="panel" id="itineraryPanel">
+        <div class="section-heading">
+          <h2>我的行程</h2>
+          <button class="text-button" id="clearPlan" type="button">清空</button>
+        </div>
+        <div class="empty-state" id="emptyPlan">还没有加入景点。</div>
+        <div class="day-plan" id="dayPlan"></div>
+      </section>
+
+      <section class="panel" id="savedPanel">
+        <div class="section-heading">
+          <h2>收藏景点</h2>
+        </div>
+        <div class="empty-state" id="emptySaved">还没有收藏。</div>
+        <div class="spot-list compact" id="savedList"></div>
+      </section>
+    </main>
+
+    <dialog class="spot-dialog" id="spotDialog">
+      <button class="dialog-close" id="closeDialog" type="button" aria-label="关闭">×</button>
+      <figure class="dialog-photo-wrap">
+        <img class="dialog-photo" id="dialogPhoto" alt="" decoding="async" referrerpolicy="no-referrer" />
+        <figcaption id="dialogPhotoCredit"></figcaption>
+      </figure>
+      <p class="eyebrow" id="dialogCity"></p>
+      <h2 id="dialogTitle"></h2>
+      <p class="spot-summary" id="dialogSummary"></p>
+      <div class="fact-grid" id="dialogFacts"></div>
+      <div class="tag-row" id="dialogTags"></div>
+      <div class="link-group" id="dialogLinks"></div>
+      <div class="dialog-actions">
+        <button class="primary-button" id="addToPlan" type="button">加入行程</button>
+        <button class="secondary-button" id="saveSpot" type="button">收藏</button>
+      </div>
+    </dialog>
+
+    <script src="./assets/leaflet.js"></script>
+    <script src="./app.js?v=4"></script>
+  </body>
+</html>
